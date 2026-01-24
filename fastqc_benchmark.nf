@@ -20,4 +20,6 @@ Channel
 
 workflow {
     FASTQC_1(sample_ch)
+    FASTQC_2(sample_ch)
+    FASTQC_3(sample_ch)
 }
