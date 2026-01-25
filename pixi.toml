@@ -1,5 +1,5 @@
 [workspace]
-channels = ["bioconda"]
+channels = ["conda-forge","bioconda"]
 name = "nextflow-cost-optimization"
 platforms = ["linux-64"]
 version = "0.1.0"
@@ -7,3 +7,4 @@ version = "0.1.0"
 [tasks]
 
 [dependencies]
+singularity = ">=3.8.6,<4"
