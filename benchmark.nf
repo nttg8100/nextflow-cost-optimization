@@ -1,10 +1,9 @@
 include { FASTQC as FASTQC_1 } from './modules/fastqc.nf'
 include { FASTQC as FASTQC_2 } from './modules/fastqc.nf'
 include { FASTQC as FASTQC_3 } from './modules/fastqc.nf'
-include { FASTQC as FASTQC_4 } from './modules/fastqc.nf'
-
-// Set input CSV file in params.input
-params.input = "samples.csv"
+include { FASTP as FASTP_1 } from './modules/fastp.nf'
+include { FASTP as FASTP_2 } from './modules/fastp.nf'
+include { FASTP as FASTP_3 } from './modules/fastp.nf'
 
 // Parse CSV; skip header, split by comma, expand to tuple for process
 Channel
@@ -19,7 +18,17 @@ Channel
     .set { sample_ch }
 
 workflow {
-    FASTQC_1(sample_ch)
-    FASTQC_2(sample_ch)
-    FASTQC_3(sample_ch)
+    if (params.run_fastqc) {
+        // fastqc benchmarks
+        FASTQC_1(sample_ch)
+        FASTQC_2(sample_ch)
+        FASTQC_3(sample_ch)
+    }
+    
+    if (params.run_fastp) {
+        // fastp benchmarks
+        FASTP_1(sample_ch,[], false, false, false)
+        FASTP_2(sample_ch,[], false, false, false)
+        FASTP_3(sample_ch,[], false, false, false)
+    }
 }

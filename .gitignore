@@ -22,3 +22,4 @@ bin-release/
 work
 results
 .nextflow*
+*.html
