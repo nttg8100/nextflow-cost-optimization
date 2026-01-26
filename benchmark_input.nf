@@ -1,4 +1,4 @@
-include { GENERATE_OUTPUT } from './modules/generate_output.nf'
+include { GENERATE_FILES } from './modules/generate_files.nf'
 include { COUNT_FILES as COUNT_FILES_STANDARD } from './modules/count_files.nf'
 include { COUNT_FILES as COUNT_FILES_TAR } from './modules/count_files.nf'
 
@@ -6,7 +6,7 @@ workflow {
     main: 
 
         // generate output file
-        GENERATE_OUTPUT()      
+        GENERATE_FILES()      
 
         // benchmark files input
         // normal files

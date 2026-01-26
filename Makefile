@@ -69,6 +69,7 @@ test-input-tar: ${HOME}/.pixi/bin/pixi
 		-c nextflow_s3.config \
 		--benchmark_input_tar \
 		--inputs="s3://io-benchmark/tmp.txt"
+		--outdir="s3://io-benchmark/generate_files"
 
 ##### Clean up #####
 .PHONY: clean

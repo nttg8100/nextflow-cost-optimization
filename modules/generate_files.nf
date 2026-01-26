@@ -1,4 +1,4 @@
-process GENERATE_OUTPUT {
+process GENERATE_FILES{
     cpus 2
 
     output:
