@@ -7,4 +7,20 @@ version = "0.1.0"
 [tasks]
 
 [dependencies]
+
+[feature.standard.dependencies]
 singularity = ">=3.8.6,<4"
+awscli = ">=2.33.7,<3"
+nextflow = ">=25.10.3,<26"
+
+[feature.mount.dependencies]
+mountpoint-s3 = "*"
+
+[feature.vep.dependencies]
+ensembl-vep = "*"
+bcftools = ">=1.21,<2"
+
+[environments]
+standard = ["standard"]
+mount = ["mount"]
+vep = ["vep" ]

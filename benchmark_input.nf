@@ -12,11 +12,11 @@ workflow {
         // normal files
         if (params.benchmark_input){
             
-            ch_files = COUNT_FILES_STANDARD(GENERATE_OUTPUT.out.data_files)
+            ch_files = COUNT_FILES_STANDARD(GENERATE_FILES.out.data_files)
         }
 
         // tarball and untar
         if (params.benchmark_input_tar){
-            ch_files = COUNT_FILES_TAR(GENERATE_OUTPUT.out.tarball)
+            ch_files = COUNT_FILES_TAR(GENERATE_FILES.out.tarball)
         }
 }
