@@ -5,34 +5,34 @@ ${HOME}/.pixi/bin/pixi:
 ##### Computing resource benchmark tests #####
 .PHONY: test-fastqc-singularity test-fastp-singularity test-fastqc-docker-amd64 test-fastp-docker-amd64 test-fastqc-docker-arm64 test-fastp-docker-arm64
 test-fastqc-singularity: ${HOME}/.pixi/bin/pixi
-	${HOME}/.pixi/bin/pixi run nextflow run benchmark_computing_r-e core esource.nf -profile singularity \
+	${HOME}/.pixi/bin/pixi run -e core nextflow run benchmark_computing_r-e core esource.nf -profile singularity \
 		--run_fastqc --outdir results/test_fastqc \
 		-resume -with-report report_test_fastqc.html
 
 test-fastp-singularity: ${HOME}/.pixi/bin/pixi
-	${HOME}/.pixi/bin/pixi run nextflow run benchmark_computing_r-e core esource.nf -profile singularity \
+	${HOME}/.pixi/bin/pixi run -e core nextflow run benchmark_computing_r-e core esource.nf -profile singularity \
 		--run_fastp --outdir results/test_fastp \
 		--outdir results/test_fastp \
 		-resume -with-report report_test_fastp.html
 
 test-fastqc-docker-amd64: ${HOME}/.pixi/bin/pixi
-	${HOME}/.pixi/bin/pixi run nextflow run benchmark_comput-e core ing_resource.nf -profile docker \
+	${HOME}/.pixi/bin/pixi run -e core nextflow run benchmark_comput-e core ing_resource.nf -profile docker \
 		--run_fastqc --outdir results/test_fastqc \
 		-resume -with-report report_test_fastqc.html
 
 test-fastp-docker-amd64: ${HOME}/.pixi/bin/pixi
-	${HOME}/.pixi/bin/pixi run nextflow run benchmark_comput-e core ing_resource.nf -profile docker \
+	${HOME}/.pixi/bin/pixi run -e core nextflow run benchmark_comput-e core ing_resource.nf -profile docker \
 		--run_fastp --outdir results/test_fastp \
 		--outdir results/test_fastp \
 		-resume -with-report report_test_fastp.html
 
 test-fastqc-docker-arm64: ${HOME}/.pixi/bin/pixi
-	${HOME}/.pixi/bin/pixi run nextflow run benchmark_computing_resource.n-e core f -profile docker,emulate_amd64 \
+	${HOME}/.pixi/bin/pixi run -e core nextflow run benchmark_computing_resource.n-e core f -profile docker,emulate_amd64 \
 		--run_fastqc --outdir results/test_fastqc \
 		-resume -with-report report_test_fastqc.html
 
 test-fastp-docker-arm64: ${HOME}/.pixi/bin/pixi
-	${HOME}/.pixi/bin/pixi run nextflow run benchmark_computing_resource.n-e core f -profile docker,emulate_amd64 \
+	${HOME}/.pixi/bin/pixi run -e core nextflow run benchmark_computing_resource.n-e core f -profile docker,emulate_amd64 \
 		--run_fastp --outdir results/test_fastp \
 		--outdir results/test_fastp \
 		-resume -with-report report_test_fastp.html
