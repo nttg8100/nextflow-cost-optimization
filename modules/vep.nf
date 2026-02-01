@@ -1,6 +1,7 @@
 process ENSEMBLVEP_VEP {
     tag "${meta.id}"
-    label 'process_medium'
+    cpus 4
+    memory '16.GB'
 
     conda "${moduleDir}/environment.yml"
     container "${workflow.containerEngine == 'singularity' && !task.ext.singularity_pull_docker_container
@@ -37,7 +38,20 @@ process ENSEMBLVEP_VEP {
     def reference = fasta ? "--fasta ${fasta}" : ""
     def create_index = file_extension == "vcf" ? "tabix ${args2} ${prefix}.${file_extension}.gz" : ""
     """
-    cp -r \$(readlink -f ${cache}) tmp_vep_cache
+    vep \\
+        -i ${vcf} \\
+        -o ${prefix}.${file_extension}.gz \\
+        ${args} \\
+        ${compress_cmd} \\
+        ${reference} \\
+        --assembly ${genome} \\
+        --species ${species} \\
+        --cache \\
+        --cache_version ${cache_version} \\
+        --dir_cache ${dir_cache} \\
+        --fork ${task.cpus}
+
+    ${create_index}
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
